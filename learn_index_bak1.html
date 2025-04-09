@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>德語 A1 單字記憶卡</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f4f8;
+    }
+    .card-container {
+      width: 350px;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+    .word {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .image {
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    .example {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .translation {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .answer {
+      margin-bottom: 1rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #2563eb;
+      color: white;
+      cursor: pointer;
+      margin: 0.25rem;
+    }
+    .btn:hover {
+      background-color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="word" id="word">der Mann (男人)</div>
+    <img id="image" class="image" src="https://via.placeholder.com/300x150" alt="image">
+    <div class="example" id="example">Der Mann liest die Zeitung.</div>
+    <div class="translation" id="translation">這位男人正在讀報紙。</div>
+    <div class="answer">
+      <label for="guess">請輸入德文單字：</label>
+      <input type="text" id="guess" placeholder="例如：der Mann">
+      <button class="btn" onclick="checkAnswer()">檢查</button>
+      <div id="feedback"></div>
+    </div>
+    <button class="btn" onclick="speakGerman()">🔊 發音</button>
+    <button class="btn" onclick="nextCard()">下一張</button>
+  </div>
+
+  <script>
+    const cards = [
+      {
+        word: "der Mann (男人)",
+        example: "Der Mann liest die Zeitung.",
+        translation: "這位男人正在讀報紙。",
+        image: "https://upload.wikimedia.org/wikipedia/commons/8/88/Man_reading_newspaper.jpg",
+        wordOnly: "der Mann"
+      },
+      {
+        word: "die Frau (女人)",
+        example: "Die Frau kocht das Abendessen.",
+        translation: "這位女人正在做晚餐。",
+        image: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Woman_cooking.jpg",
+        wordOnly: "die Frau"
+      },
+      {
+        word: "das Kind (孩子)",
+        example: "Das Kind spielt im Garten.",
+        translation: "孩子在花園裡玩耍。",
+        image: "https://upload.wikimedia.org/wikipedia/commons/7/71/Children_playing_in_garden.jpg",
+        wordOnly: "das Kind"
+      },
+      {
+        word: "der Freund (朋友)",
+        example: "Mein Freund wohnt in Berlin.",
+        translation: "我的朋友住在柏林。",
+        image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Berlin_friend.jpg",
+        wordOnly: "der Freund"
+      },
+      {
+        word: "die Freundin (女性朋友)",
+        example: "Meine Freundin arbeitet als Lehrerin.",
+        translation: "我的女性朋友是一名老師。",
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Teacher_in_class.jpg",
+        wordOnly: "die Freundin"
+      },
+      {
+        word: "die Familie (家庭)",
+        example: "Meine Familie ist sehr groß.",
+        translation: "我的家庭很大。",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Family_photo.jpg",
+        wordOnly: "die Familie"
+      },
+      {
+        word: "das Haus (房子)",
+        example: "Unser Haus hat einen großen Garten.",
+        translation: "我們的房子有一個大花園。",
+        image: "https://upload.wikimedia.org/wikipedia/commons/f/fb/German_house_with_garden.jpg",
+        wordOnly: "das Haus"
+      }
+    ];
+
+    let current = 0;
+
+    function updateCard() {
+      document.getElementById('word').textContent = cards[current].word;
+      document.getElementById('example').textContent = cards[current].example;
+      document.getElementById('translation').textContent = cards[current].translation;
+      document.getElementById('image').src = cards[current].image;
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('guess').value = '';
+    }
+
+    function nextCard() {
+      current = (current + 1) % cards.length;
+      updateCard();
+    }
+
+    function checkAnswer() {
+      const guess = document.getElementById('guess').value.trim().toLowerCase();
+      const correct = cards[current].wordOnly.toLowerCase();
+      const feedback = document.getElementById('feedback');
+      if (guess === correct) {
+        feedback.textContent = "✅ 正確！";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = `❌ 錯誤，正確答案是：${cards[current].wordOnly}`;
+        feedback.style.color = "red";
+      }
+    }
+
+    function speakGerman() {
+      const utter = new SpeechSynthesisUtterance(cards[current].example);
+      utter.lang = 'de-DE';
+      speechSynthesis.speak(utter);
+    }
+
+    updateCard();
+  </script>
+</body>
+</html>

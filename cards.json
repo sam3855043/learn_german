@@ -1,0 +1,51 @@
+[
+  {
+    "word": "der Mann (男人)",
+    "example": "Der Mann liest die Zeitung.",
+    "translation": "這位男人正在讀報紙。",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/88/Man_reading_newspaper.jpg",
+    "wordOnly": "der Mann"
+  },
+  {
+    "word": "die Frau (女人)",
+    "example": "Die Frau kocht das Abendessen.",
+    "translation": "這位女人正在做晚餐。",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Woman_cooking.jpg",
+    "wordOnly": "die Frau"
+  },
+  {
+    "word": "das Kind (孩子)",
+    "example": "Das Kind spielt im Garten.",
+    "translation": "孩子在花園裡玩耍。",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/71/Children_playing_in_garden.jpg",
+    "wordOnly": "das Kind"
+  },
+  {
+    "word": "der Freund (朋友)",
+    "example": "Mein Freund wohnt in Berlin.",
+    "translation": "我的朋友住在柏林。",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Berlin_friend.jpg",
+    "wordOnly": "der Freund"
+  },
+  {
+    "word": "die Freundin (女性朋友)",
+    "example": "Meine Freundin arbeitet als Lehrerin.",
+    "translation": "我的女性朋友是一名老師。",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Teacher_in_class.jpg",
+    "wordOnly": "die Freundin"
+  },
+  {
+    "word": "die Familie (家庭)",
+    "example": "Meine Familie ist sehr groß.",
+    "translation": "我的家庭很大。",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Family_photo.jpg",
+    "wordOnly": "die Familie"
+  },
+  {
+    "word": "das Haus (房子)",
+    "example": "Unser Haus hat einen großen Garten.",
+    "translation": "我們的房子有一個大花園。",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fb/German_house_with_garden.jpg",
+    "wordOnly": "das Haus"
+  }
+]
